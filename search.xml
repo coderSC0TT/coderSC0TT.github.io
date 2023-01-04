@@ -4,25 +4,18 @@
   
     
     <entry>
-      <title></title>
+      <title>深度优先搜索DFS</title>
       <link href="/2023/01/03/%E6%B7%B1%E6%90%9CDFS/"/>
       <url>/2023/01/03/%E6%B7%B1%E6%90%9CDFS/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>DFS<br>1.就像树结构一样 向深处搜索 每一个路径一定会走到头 走到头以后回溯 继续往可以走的路径移动。。。再回溯<br>2.使用栈<br>3.空间O(n)<br>4.不具有最短性</p><p>BFS<br>1.是宽度搜索 一次搜一层<br>2.使用队列<br>3.空间O(2^n)<br>4.最短路</p><p>重点 回溯与剪枝</p><figure class="highlight plaintext"><figcaption><span>[DFS排列数字] [c++]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       
       
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2023/01/03/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
-      <url>/2023/01/03/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
-      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
       
       
     </entry>
@@ -30,12 +23,37 @@
     
     
     <entry>
-      <title></title>
-      <link href="/2023/01/03/Trie/"/>
-      <url>/2023/01/03/Trie/</url>
+      <title>Trie树</title>
+      <link href="/2023/01/02/Trie/"/>
+      <url>/2023/01/02/Trie/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>这是一个用来高效存储与查找字符串集合的数据结构<br>注意要标记每个字符串的结尾</p><figure class="highlight plaintext"><figcaption><span>[Trie树] [c++]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bit/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const ing N=100010;</span><br><span class="line"></span><br><span class="line">int sun[N][26],cnt[N],idx;    </span><br><span class="line"> //每一个节点最多26个边 子节点就设置26 cnt表示以当前这个点结尾的词有多少个 idx表示当前用到了哪个下标 下标为0 既是根节点 又是空节点</span><br><span class="line"></span><br><span class="line">//插入</span><br><span class="line"> void insert(char str[])</span><br><span class="line"> &#123;</span><br><span class="line">    int p=0;</span><br><span class="line">    for(int i=0;str[i];i++) //c++字符串结尾为/0</span><br><span class="line">    &#123;</span><br><span class="line">        int u=str[i]-&#x27;a&#x27;; 将a-z映射为0-25</span><br><span class="line">        if(!son[p][u]) son[p][u]=++idx; //如果遍历到的该字母未出现过，开辟新空间存储该字母</span><br><span class="line">        p=son[p][u]; //无论之前有无此子节点 现在反正是有了 就移动过去</span><br><span class="line">    &#125;</span><br><span class="line">    cnt[p]++; //每插入一次字符串，用cnt[p]将该单词出现的次数+1</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">//查询</span><br><span class="line">int query(char str[]) </span><br><span class="line">&#123;</span><br><span class="line">    int p=0;</span><br><span class="line">    for(int i=0;syr[i];i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int u=str[i]-&#x27;a&#x27;;</span><br><span class="line">        if(!son[p][u]) return 0;</span><br><span class="line">        p=son[p][u];</span><br><span class="line">    &#125;</span><br><span class="line">    return cnt[p];</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><figcaption><span>[最大异或对] [c++]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>并查集</title>
+      <link href="/2023/01/02/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
+      <url>/2023/01/02/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>一般处理的问题<br>1.将两个集合合并<br>2.询问两个元素是否在一个集合当中</p><p>如果是暴力做法 数组存储每个元素属于哪一个集合<br>1.<br>belong[x]&#x3D;a<br>if(belong[x]&#x3D;belong[y]) O(1)<br>2.如果想合并 极其麻烦 元素多了就寄了</p><p>基本原理<br>用树的形式维护每一个集合 树根的编号就是集合的编号<br>每个节点存储它的父节点p[x]表示x的父节点<br>1.<br>将一棵树插到另一棵树<br>px是x的集合编号 py是y的集合编号 合并就是p[x]&#x3D;y</p><ol start="2"><li>求某个点属于哪个集合 通过其父节点<br>求x的集合编号 while(p[x]!&#x3D;x) x&#x3D;p[x]; 路径压缩优化 一旦找到根节点 整个路径上所有结点直接指向根节点</li></ol><figure class="highlight plaintext"><figcaption><span>[并查集] [c++]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N=1000010;</span><br><span class="line">int n,m;</span><br><span class="line">int p[N]; //存父节点</span><br><span class="line"></span><br><span class="line">int find(int x) //返回x的祖宗节点+路径压缩</span><br><span class="line">&#123;</span><br><span class="line">    if(p[x]==x) return x;//没错 就两行 如果x不是根节点 就让x的父节点等于它的祖宗节点</span><br><span class="line">    return p[x]=find(p[x]); //递归将路径上所有结点的父节点都是根节点</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    for(int i=1;i&lt;=n;i++) p[i]=i;</span><br><span class="line">    while(m--)</span><br><span class="line">    &#123;</span><br><span class="line">        char op[2];</span><br><span class="line">        int a,b;</span><br><span class="line">        cin&gt;&gt;op&gt;&gt;a&gt;&gt;b;</span><br><span class="line">        if(op[0]==&#x27;M&#x27;) p[find(a)]=find(b) //合并操作 让a的祖宗节点的父亲等于b的祖宗节点 相当于插入了</span><br><span class="line">        else //判断是否在同一个集合里</span><br><span class="line">        &#123;</span><br><span class="line">            if(find(a)==find(b)) puts(&quot;Yes&quot;)</span><br><span class="line">            else puts(&quot;No&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><p>acwing 837<br>其实思路十分相近 所谓连通块可以直接用集合来维护 只需模板代码稍作改变<br>主要问题是怎么维护size 也就是集合里元素数量</p><figure class="highlight plaintext"><figcaption><span>[连通块中点的数量] [c++]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N=1000010;</span><br><span class="line">int n,m;</span><br><span class="line">int p[N],size[N]; //每一个集合里点的数量</span><br><span class="line"></span><br><span class="line">int find(int x) </span><br><span class="line">&#123;</span><br><span class="line">    if(p[x]==x) return x;</span><br><span class="line">    return p[x]=find(p[x])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    ios::sync_with_stdio(false);</span><br><span class="line">    cin.tie(0);</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    for(int i=1;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        p[i]=i;</span><br><span class="line">        size[i]=1;</span><br><span class="line">    &#125;</span><br><span class="line">    while(m--)</span><br><span class="line">    &#123;</span><br><span class="line">        char op[5];</span><br><span class="line">        int a,b;</span><br><span class="line">        cin&gt;&gt;op;</span><br><span class="line">        if(op[0]==&#x27;C&#x27;)//合并</span><br><span class="line">        &#123;</span><br><span class="line">            cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">            if(find(a)==find(b)) continue;//此题有自己连自己的情况 需要特判</span><br><span class="line">            size[find(b)]+=size[find(a)];</span><br><span class="line">            p[find(a)]=find(b);</span><br><span class="line">          </span><br><span class="line">        &#125;</span><br><span class="line">        else if(op[1]==&#x27;1&#x27;)</span><br><span class="line">        &#123;</span><br><span class="line">            cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">            if(find(a)==find(b)) puts(&quot;Yes&quot;);</span><br><span class="line">            else puts(&quot;No&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else // 问数量</span><br><span class="line">        &#123;</span><br><span class="line">            cin&gt;&gt;a;</span><br><span class="line">            cout&lt;&lt;size[(find(a))];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
       
       
     </entry>
@@ -52,7 +70,7 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 数据结构 </category>
           
       </categories>
       
@@ -388,28 +406,6 @@
     
     
     <entry>
-      <title></title>
-      <link href="/css/background.css"/>
-      <url>/css/background.css</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>/* 页脚与头图透明 */#footer {  background: transparent !important;}#page-header {  background: transparent !important;}/* 白天模式遮罩透明 */#footer::before {  background: transparent !important;}#page-header::before {  background: transparent !important;}/* 夜间模式遮罩透明 */[data-theme="dark"] #footer::before {  background: transparent !important;}[data-theme="dark"] #page-header::before {  background: transparent !important;}/* 翻页按钮居中 */#pagination {  width: 100%;  margin: auto;}/* 侧边栏个人信息卡片动态渐变色 */#aside-content > .card-widget.card-info {  background: linear-gradient(    -45deg,    #e8d8b9,    #eccec5,    #a3e9eb,    #bdbdf0,    #eec1ea  );  box-shadow: 0 0 5px rgb(66, 68, 68);  position: relative;  background-size: 400% 400%;  -webkit-animation: Gradient 10s ease infinite;  -moz-animation: Gradient 10s ease infinite;  animation: Gradient 10s ease infinite !important;}@-webkit-keyframes Gradient {  0% {    background-position: 0% 50%;  }  50% {    background-position: 100% 50%;  }  100% {    background-position: 0% 50%;  }}@-moz-keyframes Gradient {  0% {    background-position: 0% 50%;  }  50% {    background-position: 100% 50%;  }  100% {    background-position: 0% 50%;  }}@keyframes Gradient {  0% {    background-position: 0% 50%;  }  50% {    background-position: 100% 50%;  }  100% {    background-position: 0% 50%;  }}/* 黑夜模式适配 */[data-theme="dark"] #aside-content > .card-widget.card-info {  background: #191919ee;}/* 个人信息Follow me按钮 */#aside-content > .card-widget.card-info > #card-info-btn {  background-color: #3eb8be;  border-radius: 8px;}@font-face {  font-family: 'tzy';  /* 字体名自定义即可 */  /* src: url('https://cdn.jsdelivr.net/gh/tzy13755126023/BLOG_SOURCE/font/ZhuZiAWan.woff2'); */  src: url('https://npm.elemecdn.com/ethan4116-blog/lib/font/ZhuZiAWan.ttf');  /* 字体文件路径 */  font-display: swap;}body,.gitcalendar {  font-family: tzy !important;}]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>categories</title>
       <link href="/Gallery/index.html"/>
       <url>/Gallery/index.html</url>
@@ -433,21 +429,21 @@
     
     <entry>
       <title></title>
-      <link href="/js/cursor.js"/>
-      <url>/js/cursor.js</url>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>var CURSOR;Math.lerp = (a, b, n) => (1 - n) * a + n * b;const getStyle = (el, attr) => {    try {        return window.getComputedStyle            ? window.getComputedStyle(el)[attr]            : el.currentStyle[attr];    } catch (e) {}    return "";};class Cursor {    constructor() {        this.pos = {curr: null, prev: null};        this.pt = [];        this.create();        this.init();        this.render();    }    move(left, top) {        this.cursor.style["left"] = `${left}px`;        this.cursor.style["top"] = `${top}px`;    }    create() {        if (!this.cursor) {            this.cursor = document.createElement("div");            this.cursor.id = "cursor";            this.cursor.classList.add("hidden");            document.body.append(this.cursor);        }        var el = document.getElementsByTagName('*');        for (let i = 0; i < el.length; i++)            if (getStyle(el[i], "cursor") == "pointer")                this.pt.push(el[i].outerHTML);        document.body.appendChild((this.scr = document.createElement("style")));        // 这里改变鼠标指针的颜色 由svg生成        this.scr.innerHTML = `* {cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='8px' height='8px'><circle cx='4' cy='4' r='4' opacity='.5'/></svg>") 4 4, auto}`;    }    refresh() {        this.scr.remove();        this.cursor.classList.remove("hover");        this.cursor.classList.remove("active");        this.pos = {curr: null, prev: null};        this.pt = [];        this.create();        this.init();        this.render();    }    init() {        document.onmouseover  = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.add("hover");        document.onmouseout   = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.remove("hover");        document.onmousemove  = e => {(this.pos.curr == null) && this.move(e.clientX - 8, e.clientY - 8); this.pos.curr = {x: e.clientX - 8, y: e.clientY - 8}; this.cursor.classList.remove("hidden");};        document.onmouseenter = e => this.cursor.classList.remove("hidden");        document.onmouseleave = e => this.cursor.classList.add("hidden");        document.onmousedown  = e => this.cursor.classList.add("active");        document.onmouseup    = e => this.cursor.classList.remove("active");    }    render() {        if (this.pos.prev) {            this.pos.prev.x = Math.lerp(this.pos.prev.x, this.pos.curr.x, 0.15);            this.pos.prev.y = Math.lerp(this.pos.prev.y, this.pos.curr.y, 0.15);            this.move(this.pos.prev.x, this.pos.prev.y);        } else {            this.pos.prev = this.pos.curr;        }        requestAnimationFrame(() => this.render());    }}(() => {    CURSOR = new Cursor();    // 需要重新获取列表时，使用 CURSOR.refresh()})();]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>音乐</title>
-      <link href="/music/index.html"/>
-      <url>/music/index.html</url>
+      <title></title>
+      <link href="/css/background.css"/>
+      <url>/css/background.css</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>/* 页脚与头图透明 */#footer {  background: transparent !important;}#page-header {  background: transparent !important;}/* 白天模式遮罩透明 */#footer::before {  background: transparent !important;}#page-header::before {  background: transparent !important;}/* 夜间模式遮罩透明 */[data-theme="dark"] #footer::before {  background: transparent !important;}[data-theme="dark"] #page-header::before {  background: transparent !important;}/* 翻页按钮居中 */#pagination {  width: 100%;  margin: auto;}/* 侧边栏个人信息卡片动态渐变色 */#aside-content > .card-widget.card-info {  background: linear-gradient(    -45deg,    #e8d8b9,    #eccec5,    #a3e9eb,    #bdbdf0,    #eec1ea  );  box-shadow: 0 0 5px rgb(66, 68, 68);  position: relative;  background-size: 400% 400%;  -webkit-animation: Gradient 10s ease infinite;  -moz-animation: Gradient 10s ease infinite;  animation: Gradient 10s ease infinite !important;}@-webkit-keyframes Gradient {  0% {    background-position: 0% 50%;  }  50% {    background-position: 100% 50%;  }  100% {    background-position: 0% 50%;  }}@-moz-keyframes Gradient {  0% {    background-position: 0% 50%;  }  50% {    background-position: 100% 50%;  }  100% {    background-position: 0% 50%;  }}@keyframes Gradient {  0% {    background-position: 0% 50%;  }  50% {    background-position: 100% 50%;  }  100% {    background-position: 0% 50%;  }}/* 黑夜模式适配 */[data-theme="dark"] #aside-content > .card-widget.card-info {  background: #191919ee;}/* 个人信息Follow me按钮 */#aside-content > .card-widget.card-info > #card-info-btn {  background-color: #3eb8be;  border-radius: 8px;}@font-face {  font-family: 'tzy';  /* 字体名自定义即可 */  /* src: url('https://cdn.jsdelivr.net/gh/tzy13755126023/BLOG_SOURCE/font/ZhuZiAWan.woff2'); */  src: url('https://npm.elemecdn.com/ethan4116-blog/lib/font/ZhuZiAWan.ttf');  /* 字体文件路径 */  font-display: swap;}body,.gitcalendar {  font-family: tzy !important;}]]></content>
       
     </entry>
     
@@ -470,6 +466,28 @@
       <url>/movies/index.html</url>
       
         <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>音乐</title>
+      <link href="/music/index.html"/>
+      <url>/music/index.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/js/cursor.js"/>
+      <url>/js/cursor.js</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>var CURSOR;Math.lerp = (a, b, n) => (1 - n) * a + n * b;const getStyle = (el, attr) => {    try {        return window.getComputedStyle            ? window.getComputedStyle(el)[attr]            : el.currentStyle[attr];    } catch (e) {}    return "";};class Cursor {    constructor() {        this.pos = {curr: null, prev: null};        this.pt = [];        this.create();        this.init();        this.render();    }    move(left, top) {        this.cursor.style["left"] = `${left}px`;        this.cursor.style["top"] = `${top}px`;    }    create() {        if (!this.cursor) {            this.cursor = document.createElement("div");            this.cursor.id = "cursor";            this.cursor.classList.add("hidden");            document.body.append(this.cursor);        }        var el = document.getElementsByTagName('*');        for (let i = 0; i < el.length; i++)            if (getStyle(el[i], "cursor") == "pointer")                this.pt.push(el[i].outerHTML);        document.body.appendChild((this.scr = document.createElement("style")));        // 这里改变鼠标指针的颜色 由svg生成        this.scr.innerHTML = `* {cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='8px' height='8px'><circle cx='4' cy='4' r='4' opacity='.5'/></svg>") 4 4, auto}`;    }    refresh() {        this.scr.remove();        this.cursor.classList.remove("hover");        this.cursor.classList.remove("active");        this.pos = {curr: null, prev: null};        this.pt = [];        this.create();        this.init();        this.render();    }    init() {        document.onmouseover  = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.add("hover");        document.onmouseout   = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.remove("hover");        document.onmousemove  = e => {(this.pos.curr == null) && this.move(e.clientX - 8, e.clientY - 8); this.pos.curr = {x: e.clientX - 8, y: e.clientY - 8}; this.cursor.classList.remove("hidden");};        document.onmouseenter = e => this.cursor.classList.remove("hidden");        document.onmouseleave = e => this.cursor.classList.add("hidden");        document.onmousedown  = e => this.cursor.classList.add("active");        document.onmouseup    = e => this.cursor.classList.remove("active");    }    render() {        if (this.pos.prev) {            this.pos.prev.x = Math.lerp(this.pos.prev.x, this.pos.curr.x, 0.15);            this.pos.prev.y = Math.lerp(this.pos.prev.y, this.pos.curr.y, 0.15);            this.move(this.pos.prev.x, this.pos.prev.y);        } else {            this.pos.prev = this.pos.curr;        }        requestAnimationFrame(() => this.render());    }}(() => {    CURSOR = new Cursor();    // 需要重新获取列表时，使用 CURSOR.refresh()})();]]></content>
       
     </entry>
     
