@@ -4,11 +4,106 @@
   
     
     <entry>
-      <title>软连接 日期时区</title>
-      <link href="/2023/09/05/linux-12%E8%BD%AF%E8%BF%9E%E6%8E%A5/"/>
-      <url>/2023/09/05/linux-12%E8%BD%AF%E8%BF%9E%E6%8E%A5/</url>
+      <title>miniob001</title>
+      <link href="/2023/09/13/miniob-miniob01/"/>
+      <url>/2023/09/13/miniob-miniob01/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>系统中创建软链接 将文件 文件夹链接到其它位置 类似于快捷方式<br>ln -s 参数1 参数2<br>-s 创建软连接<br>参数一:被连接的文件或文件夹<br>参数二:要链接去的目的地</p>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      
+      
+      <categories>
+          
+          <category> miniob </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>miniob01</title>
+      <link href="/2023/09/12/miniob-01/"/>
+      <url>/2023/09/12/miniob-01/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>基本模块<br>网络模块:客户端交互 应答等 src&#x2F;observer&#x2F;net下 主要是server.h与cpp</p><p>sql解析:将用户输入的语句解析成语法书 observer&#x2F;sql&#x2F;parser里<br>lex负责词法解析 yacc负责语法解析</p><p>计划执行模块: 根据用户输入的sql命令 执行对应语句 将生成结果返回给客户端 execute_stage.cpp</p><p>会话管理模块: 用户链接 调整参数  session下</p><p>元数据管理: 当前数据库 表的元数据 在observer&#x2F;storage&#x2F;common下</p><p>客户端:测试端 接收 发送请求ob client</p><hr><p>接下来的执行计划缓存 sql&#x2F;plan_cache里 将第一次生成的执行计划缓存 避免重复查询</p><p>语义解析:将生成的语法树转化为数据库内部结构sql&#x2F;parser (非必须)</p><p>查询缓存:将执行的查询结构缓存在内存中 下次直接返回quert_cache</p><p>查询优化:通过一定规则与统计数据 调整 重写语法书observer&#x2F;sql<br>SEDA 结合时间驱动与多线程的优点</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> miniob </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>oceanbase缓存池</title>
+      <link href="/2023/09/12/cmu15445-05/"/>
+      <url>/2023/09/12/cmu15445-05/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>研究问题:搜索引擎如何管理磁盘上数据与内存上数据的流动<br>1.内存池缓冲磁盘上文件的一部分<br>2.用户修改或插入数据时(未保存) 数据时存在缓存池的 这样避免了频繁读写硬盘</p><p>3.缓存池两大控制的目标<br>a.空间上 把经常一起用的数据集中在缓存池储存 便于直接读<br>b.时间上(什么时候把数据存到缓冲池 什么时候存到硬盘) 最小化时间</p><p>4.如果执行器要读page2：<br>先从缓存池里面找 如果没有 就把磁盘上目录加载到缓存池 再找出page2读到缓存池里 执行器再解析 后续排序 筛选都是执行器</p><p>5.缓存池也分页(frame)<br>如何知道缓存池存了哪些数据:<br>有pagetable 类似于索引的机制 也可以在其中加锁</p><p>6.locks vs latches<br>锁(locks)<br>一般指代逻辑上的 一个表<br>锁(latches 有时候也叫mutex)<br>底层的 给表的底层的数据加上锁</p><p>7.page directory 磁盘上的目录 记的是几号页在什么位置上<br>page table 内存池里的索引</p><p>8.文件页储存在哪有全局策略和本地策略</p><p>9.缓存池不止一个 降低锁的冲突</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> oceanbase </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ip地址 主机名</title>
+      <link href="/2023/09/12/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-13-ip%E5%9C%B0%E5%9D%80%E4%B8%BB%E6%9C%BA%E5%90%8D/"/>
+      <url>/2023/09/12/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-13-ip%E5%9C%B0%E5%9D%80%E4%B8%BB%E6%9C%BA%E5%90%8D/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>ifconfig 查看ip地址</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>oceanbase存储引擎2</title>
+      <link href="/2023/09/06/cmu15445-04/"/>
+      <url>/2023/09/06/cmu15445-04/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>假如一个数据很长很大 会新开一个overflow page(溢出页) 一页不够再开一页<br>一般如果存一个文件或者什么大的东西 可以记个地址进去 效率高<br>如果有外部文件 可以链接到字段 但数据库无法保证其会不会被别的软件修改<br>系统目录&#x2F;元数据 如表 列结构 索引 用户 权限等 存在里面 每个数据库的定义不一样</p><p>工作负载(workloads)</p><p>OLTP<br>在线交易处理<br>OLTP 场景包含简单的读写语句，且每个语句都只操作数据库中的一小部分数据<br>例：a给了b 5块钱 a-5 b+5</p><p>OLAP<br>在线分析处理<br>主要处理复杂的，需要检索大量数据并聚合的操作<br>例： 支付宝今日交易数据</p><p>Hybrid  OLTP + OLAP<br>混合态 均可以处理</p><p>数据在底层并不一定是一行一行存的 这是用户不用考虑的</p><p>1.n-ary storage model(NSM) 一个数据一行 这个就很适合OLTP<br>优势:如果要SELECT一行 直接走索引就能取到tuple<br>劣势：如果是复杂的分析 列查找等 要扫描所有数据 里面有很多无用数据 但是因为是行存 必须一个个解析 所以性能低下</p><p>2.decomposition storage model(DSM)<br>一个tuple存一列 比如一个元组存所有人的身高 对OLAP友好<br>如果要查找行 比如第几个身高是x的<br>a. 规定每列第一个存a的数 第二个存b的数据<br>b.每个列有自己的索引 找的时候好找 但是空间开销大</p><p>优势：如果查找列性能好<br>劣势：插入更新删除都不太方便</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> oceanbase </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>软链接 日期时区</title>
+      <link href="/2023/09/05/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-12%E8%BD%AF%E8%BF%9E%E6%8E%A5/"/>
+      <url>/2023/09/05/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-12%E8%BD%AF%E8%BF%9E%E6%8E%A5/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>系统中创建软链接 将文件 文件夹链接到其它位置 类似于快捷方式<br>ln -s 参数1 参数2<br>-s 创建软连接<br>参数一:被连接的文件或文件夹<br>参数二:要链接去的目的地</p><p>日期时区<br>date [-d] [+ 格式化字符串]<br>如按照2022-01-01的格式<br>date +%Y-%m-%d<br>date +%Y-%m-%d “%H:%M:%S” 因为有空格 后面要变字符串<br>-d是显示日期计算<br>date -d “+1 day” +%Y%m%d 显示后一天<br>date -d “+1 monrh” +%Y%m%d<br>date -d “-1 year” +%Y%m%d<br>修改时区<br>先删除自带的localtime文件 再软链接一个<br>rm -f &#x2F;etc&#x2F;localtime<br>sudo ln -s &#x2F;user&#x2F;share&#x2F;zoneinfo&#x2F;Asia&#x2F;Sichuan &#x2F;etc&#x2F;localtime</p>]]></content>
       
       
       <categories>
@@ -42,6 +137,25 @@
     
     
     <entry>
+      <title>数据库内核01</title>
+      <link href="/2023/09/04/cmu15445-01/"/>
+      <url>/2023/09/04/cmu15445-01/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>1.一个常见的数据库:编译查询更新 管理<br>2.传统数据库拓展性差性能差 不支持协同并发 操作处理不统一<br>3.关系型数据库基于实际对象的依赖关系建模 数据处理自己完成 对用户屏蔽解耦<br>4.关系型数据库 mysql oracle informix… 使用方便<br>非关系型数据库 redis(键值数据库) MongoDB…格式灵活速度快<br>5.关系型数据库 表的本质就是关系 其中元组tuple就是一组字段 属性里面的值就不可以再分了 如人名 年份 是单个字段 且一般是标量 NULL可出现在任何地方<br>6.一个关系数据表的主键(可能是某一列 其值能唯一地标识表中的每一行 ) 如果有个外界的属性去关联表中的关系 则是外键(表字段与外键类型相同 且是主表的唯一键) 如果有多对多的关系的话 可以用一个中间表<br>7.储存检索数据有两种<br>a:声明式的 比如查完以后 join之类的 带过程 如何达成结果 用户告诉其策略<br>b:非声明式的 只告诉数据库要这个结果 select。。。(让数据库研究怎么去弄 我们一般用这种)<br>8.关系型代数 十分重要<br>Syntax: 符号 predicate (R)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> oceanbase </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据库内核02</title>
       <link href="/2023/09/04/cmu15445-02/"/>
       <url>/2023/09/04/cmu15445-02/</url>
@@ -65,26 +179,7 @@
       <link href="/2023/09/04/cmu15445-03/"/>
       <url>/2023/09/04/cmu15445-03/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Diskmanager 数据库管理磁盘上的文件的模块 也叫存储引擎<br>1.一般来说数据库的数据都是存硬盘上的 但用户要操作的话 需要加载到内存里去<br>存储引擎就是管理这 个来回流动的过程</p><p>2.存储是分层的 越往上层越小越贵越快 如图<br>上层的虽然易失 但可以随机访问 可以按字节获取地址 下层那些硬盘之类的是顺序访问 且只能一块一块</p><p>3.好的存储引擎允许用户管理一个巨大的数据库 不让数据库经常读写磁盘(因为慢) 持续读写比随机读写入快</p><p>4.大多数数据库都面向硬盘(用户的东西最后归于硬盘文件) 面向内存的不考虑硬盘 更快但更小</p><p>5.内存上有个buffer pool 缓冲池 有一定的大小 硬盘上的文件的第一页的块读到缓冲池中(像一个loading的过程)<br>6.还有一个execution engine 执行器部分 执行器想获取一个东西 缓冲池先把文件目录读进去再解析 找到第n页地址加载进去 此时数据已在内存 便提供给执行器</p><p>7.mmap提供虚拟内存 和实际硬盘一样大 想找page1 操作系统直接把page1弄到物理内存里 再将虚拟内存与其链接 无需自己管理内存加载卸载 但是如果物理内存满了 操作系统不知道该卸哪一个 会陷入卡顿 </p><p>8.为什么DBMS基本优于OS<br>a.改动数据时 需自己控制保存时间 OS控制性能差<br>b.预先取出数据 执行器无需等待从磁盘到内存的过程<br>c.自己管理新老数据的替换<br>d.数据库可能多线程 线程的优先级需要自己控制</p><p>两个大问题<br>数据库的数据落在什么文件?<br>数据库如何管理数据在磁盘 内存间的流动?</p><p>第一个问题:<br>数据库存文件就是直接存在磁盘里 OS不关心存的是什么</p><p>存储引擎&#x2F;存储管理器:维护管理操作系统中的数据文件<br>1.有些自己去管理时间空间上如何存储文件<br>2.将文件按编码切好了 是一个个小页</p><p>页(page) 一般512B-16KB<br>数据库文件太大了 所以切成一个个小数据块<br>1.可能存数据 表结构 索引 日志等等<br>2.大部分数据库每个页的功能是固定的 该存什么不会存其它的<br>3.每个页有个id</p><p>堆文件(database heap)<br>一堆无序的页 里面存了很多数据(可能是随机数据)<br>页需要有增删改查功能(能增加)</p><p>如果只有一个堆文件 执行器要第x页 每个页一样大小所以很好查找 如果有多个则需要其它手段看在哪个堆文件</p><p>堆文件的第一个页(header) 里面有两个链表 一个链接空页(free page list) 一个链接有数据的(data page list )</p><p>目录文件 page directory 链接各个page 也是靠链接</p><p>每个页也有一个头(page header) 头里是关于内容的 存大小 存个checksum(校验码) 数据库版本 并发(有没有被锁 被隐藏) 压缩的信息等</p><p>任何page中的数据(data)的存储有两个流派<br>1.最常用的 slotted pages 意思是除了header和data 还有一个slot array存每个数据在哪 这样文件顺序可以乱 但是好找<br>2.只存数据 数据碎片化(有些可能破坏了依赖顺序)</p><p>record ids<br>全局需要寻找数据或者记录 需要一个id号 一般是page_id+slot&#x2F;offset<br>这个是数据库内部用的 外部软件不能用</p><p>数据(tuple)<br>在磁盘上的表现是一组二进制字节 如果不拿数据库解析就是一堆乱码</p><p>DBMS就是将他们编码好之后放磁盘上<br>tuple也有header 是元数据 里面首先有与上文类似的info 还有记录NULL 因为tuple没有分隔符 个个紧挨<br>tuple的data不存表结构 一般是顺序存储 </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> oceanbase </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>数据库内核01</title>
-      <link href="/2023/09/04/cmu15445-01/"/>
-      <url>/2023/09/04/cmu15445-01/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>1.一个常见的数据库:编译查询更新 管理<br>2.传统数据库拓展性差性能差 不支持协同并发 操作处理不统一<br>3.关系型数据库基于实际对象的依赖关系建模 数据处理自己完成 对用户屏蔽解耦<br>4.关系型数据库 mysql oracle informix… 使用方便<br>非关系型数据库 redis(键值数据库) MongoDB…格式灵活速度快<br>5.关系型数据库 表的本质就是关系 其中元组tuple就是一组字段 属性里面的值就不可以再分了 如人名 年份 是单个字段 且一般是标量 NULL可出现在任何地方<br>6.一个关系数据表的主键(可能是某一列 其值能唯一地标识表中的每一行 ) 如果有个外界的属性去关联表中的关系 则是外键(表字段与外键类型相同 且是主表的唯一键) 如果有多对多的关系的话 可以用一个中间表<br>7.储存检索数据有两种<br>a:声明式的 比如查完以后 join之类的 带过程 如何达成结果 用户告诉其策略<br>b:非声明式的 只告诉数据库要这个结果 select。。。(让数据库研究怎么去弄 我们一般用这种)<br>8.关系型代数 十分重要<br>Syntax: 符号 predicate (R)</p>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Diskmanager 数据库管理磁盘上的文件的模块 也叫存储引擎<br>1.一般来说数据库的数据都是存硬盘上的 但用户要操作的话 需要加载到内存里去<br>存储引擎就是管理这 个来回流动的过程</p><p>2.存储是分层的 越往上层越小越贵越快 如图<br>上层的虽然易失 但可以随机访问 可以按字节获取地址 下层那些硬盘之类的是顺序访问 且只能一块一块</p><p>3.好的存储引擎允许用户管理一个巨大的数据库 不让数据库经常读写磁盘(因为慢) 持续读写比随机读写入快</p><p>4.大多数数据库都面向硬盘(用户的东西最后归于硬盘文件) 面向内存的不考虑硬盘 更快但更小</p><p>5.内存上有个buffer pool 缓冲池 有一定的大小 硬盘上的文件的第一页的块读到缓冲池中(像一个loading的过程)<br>6.还有一个execution engine 执行器部分 执行器想获取一个东西 缓冲池先把文件目录读进去再解析 找到第n页地址加载进去 此时数据已在内存 便提供给执行器</p><p>7.mmap提供虚拟内存 和实际硬盘一样大 想找page1 操作系统直接把page1弄到物理内存里 再将虚拟内存与其链接 无需自己管理内存加载卸载 但是如果物理内存满了 操作系统不知道该卸哪一个 会陷入卡顿 </p><p>8.为什么DBMS基本优于OS<br>a.改动数据时 需自己控制保存时间 OS控制性能差<br>b.预先取出数据 执行器无需等待从磁盘到内存的过程<br>c.自己管理新老数据的替换<br>d.数据库可能多线程 线程的优先级需要自己控制</p><p>两个大问题<br>数据库的数据落在什么文件?<br>数据库如何管理数据在磁盘 内存间的流动?</p><p>第一个问题:<br>数据库存文件就是直接存在磁盘里 OS不关心存的是什么</p><p>存储引擎&#x2F;存储管理器:维护管理操作系统中的数据文件<br>1.有些自己去管理时间空间上如何存储文件<br>2.将文件按编码切好了 是一个个小页</p><p>页(page) 一般512B-16KB<br>数据库文件太大了 所以切成一个个小数据块<br>1.可能存数据 表结构 索引 日志等等<br>2.大部分数据库每个页的功能是固定的 该存什么不会存其它的<br>3.每个页有个id</p><p>堆文件(database heap)<br>一堆无序的页 里面存了很多数据(可能是随机数据)<br>页需要有增删改查功能(能增加)</p><p>如果只有一个堆文件 执行器要第x页 每个页一样大小所以很好查找 如果有多个则需要其它手段看在哪个堆文件</p><p>堆文件的第一个页(header) 里面有两个链表 一个链接空页(free page list) 一个链接有数据的(data page list )</p><p>目录文件 page directory 链接各个page 也是靠链接</p><p>每个页也有一个头(page header) 头里是关于内容的 存大小 存个checksum(校验码) 数据库版本 并发(有没有被锁 被隐藏) 压缩的信息等</p><p>任何page中的数据(data)的存储有两个流派<br>1.最常用的 slotted pages 意思是除了header和data 还有一个slot array存每个数据在哪 这样文件顺序可以乱 但是好找<br>2.只存数据 数据碎片化(有些可能破坏了依赖顺序)</p><p>record ids<br>全局需要寻找数据或者记录 需要一个id号 一般是page_id+slot&#x2F;offset<br>这个是数据库内部用的 外部软件不能用</p><p>数据(tuple)<br>在磁盘上的表现是一组二进制字节 如果不拿数据库解析就是一堆乱码</p><p>DBMS就是将他们编码好之后放磁盘上<br>tuple也有header 是元数据 里面首先有与上文类似的info 还有记录NULL 因为tuple没有分隔符 个个紧挨<br>tuple的data不存表结构 一般是顺序存储 </p><p>也有一种存的不是数据(log - structured file) 存的是数据的变化 拿数据是从新往旧回放 找到其最开始的起始点 再往后找到最新的变化<br>如果是之前的方式 需要找到对应页 再找到对应数据进行修改 这种方式只需要新建一个页 往里记日志完事<br>页内很多信息可以压缩成一条 比如压缩后:<br>id &#x3D;1,val &#x3D;a<br>id &#x3D;2,val&#x3D;b<br>DELETE id&#x3D;4<br>并且还有level0文件合并以后压缩成level1文件的操作 比如文件1有数据a的插入操作 文件2有数据a的修改操作 可以合并压缩<br>这种一般用在kv数据库 因为只有一个键一个值 直接就更新成最新值<br>这就是rocksDB的基本原理<br>也有些压缩方式是合并以后没有层的概念 这样插入的时候可以把随机写变成顺序写</p>]]></content>
       
       
       <categories>
@@ -156,25 +251,6 @@
     
     
     <entry>
-      <title>grep wc和管道符</title>
-      <link href="/2023/09/01/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-06grep-wc-%E7%AE%A1%E9%81%93%E7%AC%A6/"/>
-      <url>/2023/09/01/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-06grep-wc-%E7%AE%A1%E9%81%93%E7%AC%A6/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>grep从文件中通过关键字过滤文件行<br>grep [-n] 关键字 文件路径<br>-n表示显示匹配到的行号<br>如 grep -n a test1.txt</p><p>wc命令统计文件的行数 单词数量等<br>wc [-c -m -l -w] 文件路径<br>-c bytes数量 -m统计字符数量 -l统计行数 -w统计单词数量</p><p>管道符 | 将管道符左边命令的结果作为右边命令的输入<br>只要能产生输出的内容的命令都可以和管道符结合使用<br>如 cat text.txt | wc -l </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> linux </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>echo tail 重定向符</title>
       <link href="/2023/09/01/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-07echo-tail-%E9%87%8D%E5%AE%9A%E5%90%91%E7%AC%A6/"/>
       <url>/2023/09/01/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-07echo-tail-%E9%87%8D%E5%AE%9A%E5%90%91%E7%AC%A6/</url>
@@ -194,11 +270,11 @@
     
     
     <entry>
-      <title>vim编译器</title>
-      <link href="/2023/09/01/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-08vim%E7%BC%96%E8%BE%91%E5%99%A8/"/>
-      <url>/2023/09/01/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-08vim%E7%BC%96%E8%BE%91%E5%99%A8/</url>
+      <title>grep wc和管道符</title>
+      <link href="/2023/09/01/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-06grep-wc-%E7%AE%A1%E9%81%93%E7%AC%A6/"/>
+      <url>/2023/09/01/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-06grep-wc-%E7%AE%A1%E9%81%93%E7%AC%A6/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>命令模式  所敲按键编辑器都理解为命令 驱动执行不同的功能 不能自由进行文本编辑<br>输入模式 自由编辑<br>底线命令模式 以:开始 通常用于文件的保存 退出<br>vim&#x2F;vi 文件路径<br>如果文件路径表示的文件不存在 用于编辑新文件 如果存在 用于编辑已有文件<br>一开始进入是命令模式 命令模式才可以切换到输入模式或者底线命令模式<br>命令模式到输入模式按i esc退出<br>命令模式到底线命令按:进入底线命令模式 wq保存退出</p>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>grep从文件中通过关键字过滤文件行<br>grep [-n] 关键字 文件路径<br>-n表示显示匹配到的行号<br>如 grep -n a test1.txt</p><p>wc命令统计文件的行数 单词数量等<br>wc [-c -m -l -w] 文件路径<br>-c bytes数量 -m统计字符数量 -l统计行数 -w统计单词数量</p><p>管道符 | 将管道符左边命令的结果作为右边命令的输入<br>只要能产生输出的内容的命令都可以和管道符结合使用<br>如 cat text.txt | wc -l </p>]]></content>
       
       
       <categories>
@@ -232,11 +308,11 @@
     
     
     <entry>
-      <title>linux前置内容</title>
-      <link href="/2023/08/31/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-01%E5%88%9D%E8%AF%86linux/"/>
-      <url>/2023/08/31/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-01%E5%88%9D%E8%AF%86linux/</url>
+      <title>vim编译器</title>
+      <link href="/2023/09/01/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-08vim%E7%BC%96%E8%BE%91%E5%99%A8/"/>
+      <url>/2023/09/01/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-08vim%E7%BC%96%E8%BE%91%E5%99%A8/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>1.操作系统作为软件的一种 是用户和计算机硬件的桥梁 负责调度键盘文字输入 调度显示器显示内容 cpu内存供给等等 等于就是给硬件安排活动<br>2.Linux由系统内核以及系统级应用程序组成 内核调度cpu 内存 文件系统等 而应用程序包含文件管理器 任务管理器等<br>3.程序调用内核 内核调度硬件<br>4.linux发行版是指内核之上封装系统级应用程序 组合在一起即Linux发行版<br>5.虚拟机是在系统中通过虚拟化软件得到虚拟化硬件 给虚拟化硬件安装真实操作系统(总不可能把自己电脑重装成linux系统吧)<br>6.命令行 效率更高更稳定<br>7.传统方式获取linux操作系统环境是安装完整虚拟机 如VMware 也可以用WSL 更加简单快捷<br>WSL是用于Windows系统之上的Linux子系统 作用是在Windows系统中获得Linux系统环境 直连硬件 无需虚拟机</p>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>命令模式  所敲按键编辑器都理解为命令 驱动执行不同的功能 不能自由进行文本编辑<br>输入模式 自由编辑<br>底线命令模式 以:开始 通常用于文件的保存 退出<br>vim&#x2F;vi 文件路径<br>如果文件路径表示的文件不存在 用于编辑新文件 如果存在 用于编辑已有文件<br>一开始进入是命令模式 命令模式才可以切换到输入模式或者底线命令模式<br>命令模式到输入模式按i esc退出<br>命令模式到底线命令按:进入底线命令模式 wq保存退出</p>]]></content>
       
       
       <categories>
@@ -270,11 +346,11 @@
     
     
     <entry>
-      <title>相对路径以及绝对路径</title>
-      <link href="/2023/08/31/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-03%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84%E4%BB%A5%E5%8F%8A%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84/"/>
-      <url>/2023/08/31/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-03%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84%E4%BB%A5%E5%8F%8A%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84/</url>
+      <title>linux前置内容</title>
+      <link href="/2023/08/31/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-01%E5%88%9D%E8%AF%86linux/"/>
+      <url>/2023/08/31/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-01%E5%88%9D%E8%AF%86linux/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>绝对路径以根目录作为起点 如 cd &#x2F;home&#x2F;users&#x2F;Desktop<br>相对路径以当前目录为起点 无需以&#x2F;开头 如 cd Desktop<br>&#x2F;home&#x2F;users&#x2F;Desktop 切换回上一级 &#x2F;home&#x2F;users 可以直接cd 也可以通过特殊路径符来完成<br>.表示当前目录 cd.&#x2F;Desktop 和 cd Desktop效果一致<br>..表示上一级目录 cd .. 表示切换到上一级目录 cd ..&#x2F;.. 切换到上二级目录<br>~表示home目录 cd ~即可切换到home目录 cd ~&#x2F;Desktop 切换到home内的Desktop目录</p>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>1.操作系统作为软件的一种 是用户和计算机硬件的桥梁 负责调度键盘文字输入 调度显示器显示内容 cpu内存供给等等 等于就是给硬件安排活动<br>2.Linux由系统内核以及系统级应用程序组成 内核调度cpu 内存 文件系统等 而应用程序包含文件管理器 任务管理器等<br>3.程序调用内核 内核调度硬件<br>4.linux发行版是指内核之上封装系统级应用程序 组合在一起即Linux发行版<br>5.虚拟机是在系统中通过虚拟化软件得到虚拟化硬件 给虚拟化硬件安装真实操作系统(总不可能把自己电脑重装成linux系统吧)<br>6.命令行 效率更高更稳定<br>7.传统方式获取linux操作系统环境是安装完整虚拟机 如VMware 也可以用WSL 更加简单快捷<br>WSL是用于Windows系统之上的Linux子系统 作用是在Windows系统中获得Linux系统环境 直连硬件 无需虚拟机</p>]]></content>
       
       
       <categories>
@@ -289,11 +365,11 @@
     
     
     <entry>
-      <title>基本文件操作2</title>
-      <link href="/2023/08/31/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-05%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/"/>
-      <url>/2023/08/31/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-05%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/</url>
+      <title>相对路径以及绝对路径</title>
+      <link href="/2023/08/31/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-03%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84%E4%BB%A5%E5%8F%8A%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84/"/>
+      <url>/2023/08/31/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-03%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84%E4%BB%A5%E5%8F%8A%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>cp [-r] 参数1 参数2<br>复制文件夹加 -r<br>参数1表示被复制的文件或文件夹<br>参数2表示被复制去的地方</p><p>mv 参数1 参数2 移动文件&#x2F;文件夹<br>若参数2不存在 则为一个改名操作</p><p>rm [-r] 参数1 参数2 … 参数N<br>-r用于删除文件夹<br>rm支持通配符* 用来模糊匹配<br><em>就是通配符 test</em>表示匹配任何以test开头的内容 *test <em>test</em>同理<br>su - root进入超级管理员模式 exit退回普通用户</p><p>我们使用的命令的本体是一个个的二进制可执行程序</p><p>which 要查找的命令  查找命令程序文件本体的位置</p><p>按文件名查找<br>find 起始路径 -name “被查找文件名”<br>按文件大小搜索<br>find 起始路径 -size +&#x2F;-n[KMG]</p><ul><li>-表示搜索大于 小于的 n是大小数字 KMG是大小单位 kb mb或gb 用小写</li></ul>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>绝对路径以根目录作为起点 如 cd &#x2F;home&#x2F;users&#x2F;Desktop<br>相对路径以当前目录为起点 无需以&#x2F;开头 如 cd Desktop<br>&#x2F;home&#x2F;users&#x2F;Desktop 切换回上一级 &#x2F;home&#x2F;users 可以直接cd 也可以通过特殊路径符来完成<br>.表示当前目录 cd.&#x2F;Desktop 和 cd Desktop效果一致<br>..表示上一级目录 cd .. 表示切换到上一级目录 cd ..&#x2F;.. 切换到上二级目录<br>~表示home目录 cd ~即可切换到home目录 cd ~&#x2F;Desktop 切换到home内的Desktop目录</p>]]></content>
       
       
       <categories>
@@ -327,16 +403,16 @@
     
     
     <entry>
-      <title>博弈搜索</title>
-      <link href="/2023/07/19/%E7%AE%97%E6%B3%95-%E5%8D%9A%E5%BC%88%E6%90%9C%E7%B4%A2/"/>
-      <url>/2023/07/19/%E7%AE%97%E6%B3%95-%E5%8D%9A%E5%BC%88%E6%90%9C%E7%B4%A2/</url>
+      <title>基本文件操作2</title>
+      <link href="/2023/08/31/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-05%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/"/>
+      <url>/2023/08/31/linux-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-05%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>MAX节点的评估下限值α:<br>假设其MIN子节点有N个 如果第一个MIN子节点评估值为α 则对于其它子节点 如果有高于α的 取最高值为该MAX节点评估值 如果没有则就是α<br>所以该MAX节点的评估值不会低于α 故称其为MAX节点的评估下限值α</p><p>MIN节点评估的上限值β:<br>假设其MAX子节点有N个 如果第一个MAX子节点评估值为β 则对于其它子节点 如果有低于β的 取最低值为该MIN节点评估值 如果没有则就是β<br>所以该MIN节点的评估值不会高于β 故称其为MIN节点的评估上限值β</p><p>α剪枝:<br>MAX节点下限为α 其所有MIN子节点中评估值β上限小于等于α的的节点其以下部分可以不搜了<br>β剪枝:<br>MIN节点的上限为β 其所有MAX子节点中α下限大于等于β的节点 其以下部分不搜了</p>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>cp [-r] 参数1 参数2<br>复制文件夹加 -r<br>参数1表示被复制的文件或文件夹<br>参数2表示被复制去的地方</p><p>mv 参数1 参数2 移动文件&#x2F;文件夹<br>若参数2不存在 则为一个改名操作</p><p>rm [-r] 参数1 参数2 … 参数N<br>-r用于删除文件夹<br>rm支持通配符* 用来模糊匹配<br><em>就是通配符 test</em>表示匹配任何以test开头的内容 *test <em>test</em>同理<br>su - root进入超级管理员模式 exit退回普通用户</p><p>我们使用的命令的本体是一个个的二进制可执行程序</p><p>which 要查找的命令  查找命令程序文件本体的位置</p><p>按文件名查找<br>find 起始路径 -name “被查找文件名”<br>按文件大小搜索<br>find 起始路径 -size +&#x2F;-n[KMG]</p><ul><li>-表示搜索大于 小于的 n是大小数字 KMG是大小单位 kb mb或gb 用小写</li></ul>]]></content>
       
       
       <categories>
           
-          <category> 算法 </category>
+          <category> linux </category>
           
       </categories>
       
@@ -686,7 +762,7 @@
       <link href="/2023/04/23/%E7%AE%97%E6%B3%95-%E4%BA%8C%E5%88%86%E6%B3%95%E7%A9%B6%E6%9E%81%E7%89%88/"/>
       <url>/2023/04/23/%E7%AE%97%E6%B3%95-%E4%BA%8C%E5%88%86%E6%B3%95%E7%A9%B6%E6%9E%81%E7%89%88/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>事情的起因是 蓝桥杯的时候二分法调了半天还错了 于是我决定重新进行一个归纳与记忆<br>用记忆以及运用最好的方法</p><p>对于这种有序数组的查找 我们一般称其为二分查找<br>例如 大致几类问题<br>1.寻找大于5的第一个数的下标<br>2.寻找大于等于5的第一个数的下标<br>3.寻找大于5的最后一个数的下标…诸如此类<br>那么如何进行记忆呢<br>查找关于x的 check() 如果是对对对错型 则 mid&lt;x或mid&lt;&#x3D;x 以此来确定分界线的位置<br>如果是错错错对型 则将数组逆序存储<br>然后我们再对l r的选取进行思考<br>如果是mid&lt;4: 1 2 3 |4 4 4 4 6 8 边界即在|处 l是3 小于4的第一个数 r是4 大于等于4的第一个数<br>如果是mid&lt;&#x3D;4 1 2 3 4 4 4 4 4| 6 8 l是大于4的最后一个数<br>怎么记呢 条件&lt;4 就是在小于4的第一个数前划一竖线<br>&lt;&#x3D;4 就是在最后一个&lt;&#x3D;4的数的右边划一个竖线</p><p>若有N个数 则从下标为1开始存<br>初始化l指针为0 r指针为N+1</p><figure class="highlight plaintext"><figcaption><span>[二分查找] [c++]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">int l=0,r=N+1</span><br><span class="line"> while(l+1!=r)</span><br><span class="line"> &#123;</span><br><span class="line">    int mid=(l+r)/2;</span><br><span class="line">    if(check(q[mid]))</span><br><span class="line">    &#123;</span><br><span class="line">        l=mid;</span><br><span class="line">    &#125;</span><br><span class="line">    else r=mid;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>单调有序数组的二分查找就到此为止了<br>接下来是用的最多的 二分答案 这样的题就太多了</p><p>一般分为<br>1.最小值最大类型(满足条件的答案越来越大)<br>2.最大值最小类型</p><figure class="highlight plaintext"><figcaption><span>[2440] [c++]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N=1e5+10;</span><br><span class="line">int n,k,a[N];</span><br><span class="line">bool check(int x);</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">cin&gt;&gt;n&gt;&gt;k;</span><br><span class="line">int longest=0;</span><br><span class="line">for(int i=1;i&lt;=n;i++)</span><br><span class="line">&#123;</span><br><span class="line">    cin&gt;&gt;a[i];</span><br><span class="line">    if(a[i]&gt;=longest) longest=a[i];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">int l=0,r=longest;</span><br><span class="line">while(l+1&lt;r)</span><br><span class="line">&#123;</span><br><span class="line">int mid=(l+r)/2;</span><br><span class="line">if(check(mid)) l=mid;</span><br><span class="line">else r=mid;</span><br><span class="line">&#125;</span><br><span class="line">if(l&lt;1) cout&lt;&lt;0&lt;&lt;endl;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">    if(check(r)) cout&lt;&lt;r&lt;&lt;endl;</span><br><span class="line">    else cout&lt;&lt;l&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line">return 0;</span><br><span class="line">&#125; </span><br><span class="line">bool check(int x)</span><br><span class="line">&#123;</span><br><span class="line">int sum=0;</span><br><span class="line">for(int j=1;j&lt;=n;j++)</span><br><span class="line">&#123;</span><br><span class="line">sum+=(a[j]/x);</span><br><span class="line">&#125;</span><br><span class="line">if(sum&gt;=k) return true;</span><br><span class="line">else return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><figcaption><span>[2678] [c++]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N=1e5+7;</span><br><span class="line">int a[N],ans;</span><br><span class="line">bool check(int x,int b[],int n,int m)</span><br><span class="line">&#123;</span><br><span class="line">int now=0,tot=0;</span><br><span class="line">for(int j=1;j&lt;=n+1;j++)</span><br><span class="line">&#123;</span><br><span class="line">if(a[j]-a[now]&lt;x) tot++;//如果距离小 这颗石头可以搬走 </span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">now=j;// 如果距离大,就跳过去  </span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">if(tot&gt;m) return false;</span><br><span class="line">else return true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">int L,n,m;</span><br><span class="line">cin&gt;&gt;L&gt;&gt;n&gt;&gt;m;</span><br><span class="line">for(int i=1;i&lt;=n;i++) cin&gt;&gt;a[i];</span><br><span class="line">a[n+1]=L;</span><br><span class="line">int l=1,r=L;</span><br><span class="line">while(l+1&lt;r)</span><br><span class="line">&#123;</span><br><span class="line">int mid=(l+r)&gt;&gt;1;</span><br><span class="line">if (check(mid,a,n,m))</span><br><span class="line">&#123;</span><br><span class="line">l=mid; </span><br><span class="line">    &#125;</span><br><span class="line">else r=mid;</span><br><span class="line">&#125;</span><br><span class="line">if(check(r,a,n,m)) cout&lt;&lt;r&lt;&lt;endl;</span><br><span class="line">else cout&lt;&lt;l&lt;&lt;endl;</span><br><span class="line">return 0;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>事情的起因是 蓝桥杯的时候二分法调了半天还错了 于是我决定重新进行一个归纳与记忆<br>用记忆以及运用最好的方法</p><p>对于这种有序数组的查找 我们一般称其为二分查找<br>例如 大致几类问题<br>1.寻找大于5的第一个数的下标<br>2.寻找大于等于5的第一个数的下标<br>3.寻找大于5的最后一个数的下标…诸如此类<br>那么如何进行记忆呢<br>查找关于x的 check() 如果是对对对错型 则 mid&lt;x或mid&lt;&#x3D;x 以此来确定分界线的位置<br>如果是错错错对型 则将数组逆序存储<br>然后我们再对l r的选取进行思考<br>如果是mid&lt;4: 1 2 3 |4 4 4 4 6 8 边界即在|处 l是3 小于4的第一个数 r是4 大于等于4的第一个数<br>如果是mid&lt;&#x3D;4 1 2 3 4 4 4 4 4| 6 8 l是大于4的最后一个数<br>怎么记呢 条件&lt;4 就是在小于4的第一个数前划一竖线<br>&lt;&#x3D;4 就是在最后一个&lt;&#x3D;4的数的右边划一个竖线</p><p>若有N个数 则从下标为1开始存<br>初始化l指针为0 r指针为N+1</p><figure class="highlight plaintext"><figcaption><span>[二分查找] [c++]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">int l=0,r=N+1</span><br><span class="line"> while(l+1!=r)</span><br><span class="line"> &#123;</span><br><span class="line">    int mid=(l+r)/2;</span><br><span class="line">    if(check(q[mid]))</span><br><span class="line">    &#123;</span><br><span class="line">        l=mid;</span><br><span class="line">    &#125;</span><br><span class="line">    else r=mid;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>单调有序数组的二分查找就到此为止了<br>接下来是用的最多的 二分答案 这样的题就太多了</p><p>一般分为<br>1.最小值最大类型(满足条件的答案越来越大)<br>2.最大值最小类型</p><figure class="highlight plaintext"><figcaption><span>[2440] [c++]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N=1e5+10;</span><br><span class="line">int n,k,a[N];</span><br><span class="line">bool check(int x);</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">cin&gt;&gt;n&gt;&gt;k;</span><br><span class="line">int longest=0;</span><br><span class="line">for(int i=1;i&lt;=n;i++)</span><br><span class="line">&#123;</span><br><span class="line">    cin&gt;&gt;a[i];</span><br><span class="line">    if(a[i]&gt;=longest) longest=a[i];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">int l=0,r=longest;</span><br><span class="line">while(l+1&lt;r)</span><br><span class="line">&#123;</span><br><span class="line">int mid=(l+r)/2;</span><br><span class="line">if(check(mid)) l=mid;</span><br><span class="line">else r=mid;</span><br><span class="line">&#125;</span><br><span class="line">if(l&lt;1) cout&lt;&lt;0&lt;&lt;endl;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">    if(check(r)) cout&lt;&lt;r&lt;&lt;endl;</span><br><span class="line">    else cout&lt;&lt;l&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line">return 0;</span><br><span class="line">&#125; </span><br><span class="line">bool check(int x)</span><br><span class="line">&#123;</span><br><span class="line">int sum=0;</span><br><span class="line">for(int j=1;j&lt;=n;j++)</span><br><span class="line">&#123;</span><br><span class="line">sum+=(a[j]/x);</span><br><span class="line">&#125;</span><br><span class="line">if(sum&gt;=k) return true;</span><br><span class="line">else return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><figcaption><span>[2678] [c++]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N=1e5+7;</span><br><span class="line">int a[N],ans;</span><br><span class="line">bool check(int x,int b[],int n,int m)</span><br><span class="line">&#123;</span><br><span class="line">int now=0,tot=0;</span><br><span class="line">for(int j=1;j&lt;=n+1;j++)</span><br><span class="line">&#123;</span><br><span class="line">if(a[j]-a[now]&lt;x) tot++;//如果距离小 这颗石头可以搬走 </span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">now=j;// 如果距离大,就跳过去  </span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">if(tot&gt;m) return false;</span><br><span class="line">else return true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">int L,n,m;</span><br><span class="line">cin&gt;&gt;L&gt;&gt;n&gt;&gt;m;</span><br><span class="line">for(int i=1;i&lt;=n;i++) cin&gt;&gt;a[i];</span><br><span class="line">a[n+1]=L;</span><br><span class="line">int l=1,r=L;</span><br><span class="line">while(l+1&lt;r)</span><br><span class="line">&#123;</span><br><span class="line">int mid=(l+r)&gt;&gt;1;</span><br><span class="line">if (check(mid,a,n,m))</span><br><span class="line">&#123;</span><br><span class="line">l=mid; </span><br><span class="line">    &#125;</span><br><span class="line">else r=mid;</span><br><span class="line">&#125;</span><br><span class="line">if(check(r,a,n,m)) cout&lt;&lt;r&lt;&lt;endl;</span><br><span class="line">else cout&lt;&lt;l&lt;&lt;endl;</span><br><span class="line">return 0;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure><p>伐木那题 切的长度越短 越能分出k段 所以是对对对对错型</p><p>跳石头 最短跳跃很小 只要到其中最大的间隔 就行 一个石头都不用移动 如果要移动石头 就把最短距离调大 那么也是对对对对错型</p><p>插路标 空旷指数是相邻路标最大距离 如果最大距离特别小 那么需要很多的路标 可能就不够 如果最大距离很大很大 不需要插路标 也可以满足 所以是错错错对型 需要改成r&#x3D;mid在先</p>]]></content>
       
       
       <categories>
@@ -1552,6 +1628,17 @@
     
     <entry>
       <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>categories</title>
       <link href="/Gallery/index.html"/>
       <url>/Gallery/index.html</url>
       
@@ -1567,17 +1654,6 @@
       <url>/css/background.css</url>
       
         <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>/* 页脚与头图透明 */#footer {  background: transparent !important;}#page-header {  background: transparent !important;}/* 白天模式遮罩透明 */#footer::before {  background: transparent !important;}#page-header::before {  background: transparent !important;}/* 夜间模式遮罩透明 */[data-theme="dark"] #footer::before {  background: transparent !important;}[data-theme="dark"] #page-header::before {  background: transparent !important;}/* 翻页按钮居中 */#pagination {  width: 100%;  margin: auto;}/* 侧边栏个人信息卡片动态渐变色 */#aside-content > .card-widget.card-info {  background: linear-gradient(    -45deg,    #e8d8b9,    #eccec5,    #a3e9eb,    #bdbdf0,    #eec1ea  );  box-shadow: 0 0 5px rgb(66, 68, 68);  position: relative;  background-size: 400% 400%;  -webkit-animation: Gradient 10s ease infinite;  -moz-animation: Gradient 10s ease infinite;  animation: Gradient 10s ease infinite !important;}@-webkit-keyframes Gradient {  0% {    background-position: 0% 50%;  }  50% {    background-position: 100% 50%;  }  100% {    background-position: 0% 50%;  }}@-moz-keyframes Gradient {  0% {    background-position: 0% 50%;  }  50% {    background-position: 100% 50%;  }  100% {    background-position: 0% 50%;  }}@keyframes Gradient {  0% {    background-position: 0% 50%;  }  50% {    background-position: 100% 50%;  }  100% {    background-position: 0% 50%;  }}/* 黑夜模式适配 */[data-theme="dark"] #aside-content > .card-widget.card-info {  background: #191919ee;}/* 个人信息Follow me按钮 */#aside-content > .card-widget.card-info > #card-info-btn {  background-color: #3eb8be;  border-radius: 8px;}@font-face {  font-family: 'tzy';  /* 字体名自定义即可 */  /* src: url('https://cdn.jsdelivr.net/gh/tzy13755126023/BLOG_SOURCE/font/ZhuZiAWan.woff2'); */  src: url('https://npm.elemecdn.com/ethan4116-blog/lib/font/ZhuZiAWan.ttf');  /* 字体文件路径 */  font-display: swap;}body,.gitcalendar {  font-family: tzy !important;}/* 帧率检测 */#fps {  position: fixed;  /* 指定位置 */  left: 10px;  bottom: 10px;  z-index: 1919810;}[data-theme="light"] #fps {  background-color: rgba(255, 255, 255, 0.85);  backdrop-filter: var(--backdrop-filter);  padding: 4px;  border-radius: 4px;}[data-theme="dark"] #fps {  background-color: rgba(0, 0, 0, 0.72);  backdrop-filter: var(--backdrop-filter);  padding: 4px;  border-radius: 4px;}]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
       
     </entry>
     
@@ -1606,6 +1682,17 @@
     
     
     <entry>
+      <title>电影</title>
+      <link href="/movies/index.html"/>
+      <url>/movies/index.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>友链</title>
       <link href="/link/index.html"/>
       <url>/link/index.html</url>
@@ -1620,17 +1707,6 @@
       <title>音乐</title>
       <link href="/music/index.html"/>
       <url>/music/index.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>电影</title>
-      <link href="/movies/index.html"/>
-      <url>/movies/index.html</url>
       
         <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
       
